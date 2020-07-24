@@ -1,0 +1,201 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body{
+    background:
+        url(./images/Elpses.png) left top no-repeat,
+        #2F303A;
+        
+    color: white;
+}
+.main{
+    min-height: 100%;
+    position: relative;
+    /* margin-bottom: 80px; */
+    /* overflow: hidden; */
+}
+
+.left{
+  display:block;
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+  margin:0 auto;
+  bottom:-80px;
+  height:600px;
+  transform: translateY(30%);
+  text-align: center;
+}
+
+.info{
+  position: relative;
+}
+
+.photo {
+    display: block;
+    width: 200px;
+    margin: 0 auto -150px auto;
+    top: -136px;
+    position: relative;
+}
+
+.info h3, .info p{
+    display:block;
+    text-align: center;
+    font-family:Poppins;
+    color:#000000;
+}
+
+.notif{
+    width: 40px;
+}
+
+.nav-bar {
+    clear: both;
+    position: relative;
+    margin-left:30px;
+    bottom: 0;
+    width:100%;
+}
+.updates {
+  position: relative;
+  display: inline-block;
+  /* padding-bottom: 113px; */
+  padding: 60px;
+}
+.updates > div {
+  float:left;
+  display: block;
+}
+.updates .notif {
+  display: block;
+  margin: 0 auto;
+}
+.updates .project-link{
+  display:block;
+  padding:30px;
+}
+
+.updates:after{
+  display: block;
+  content:"";
+  clear:both;
+}
+
+@media screen and (max-width:600px) {
+ .updates > div {
+    float:none;
+    display: block;
+  }
+}
+
+.nav-link, .nav-social{
+  position:realative;
+    float:left;
+  display: block;
+  text-align: center;
+  padding:5px;
+  margin-left:10px;
+}
+
+.nav-social{
+
+  margin-left:5px;
+}
+.nav-social img{
+    width: 20px;
+    height:20px;
+    }
+.twit{
+  background:rgb(8, 160, 233);
+  border-radius: 3px;
+}
+.instg{
+  background:#ccc;
+  border-radius:5px;
+  margin-left:15px;
+
+}
+
+.fb{
+  background:rgb(59, 89, 152);;
+  border-radius:3px;
+  margin-left:15px;
+
+}
+
+.footer{
+    width: 100%;
+    max-height: 130px;
+    bottom: 0;
+    position: fixed;        
+    background: #2F303A;
+}
+.title{
+  font-family:24px;
+  color: rgba(137, 232, 239, 0.75);
+}
+.project-link{
+  display:block;
+  margin:0 auto;
+  font-size:18px;
+  font-family:poppins;
+  width:fit-content;
+  height:fit-content;
+  color: #000000;
+  position:relative;
+  top:-30px
+}
+.link1{
+    font-family:Poppins;
+    font-size:16px;
+    color:#ffffff;
+}
+.link2{
+    font-family:Poppins;
+    font-size:16px;
+    color:#ffffff;
+    margin-left:20px;
+}
+.link3{
+    font-family:Poppins;
+    font-size:16px;
+    color:#ffffff;
+    margin-left:20px;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+/*   float:right; */
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.hvr-fade {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
+  background-color:rgba(137, 232, 239, 0.75);
+  color: blue;
+}
