@@ -9,10 +9,10 @@ body{
   margin: 0;
   font-family:Poppins;
 }
-
 header{
   text-align: center;
   padding: 30px;
+  flex-grow: 0;
 }
 
 main {
@@ -52,6 +52,13 @@ main {
   font-size: 1.4em;
 }
 
+.image1::hover{
+transformy: scale(1.2);
+}
+.image{
+  box-shadow: 0.3px 1px 6px teal;
+  border-radius:15px;
+}
 .project-link{
   text-decoration: none;
   margin-left:20px;
@@ -72,6 +79,7 @@ main {
 
 .navbar{
   display: flex;
+  flex-grow: 0;
   padding: 5%;
 }
 
