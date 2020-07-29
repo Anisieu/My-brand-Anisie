@@ -1,0 +1,179 @@
+html, body {
+  height: 100%;
+  width:100%
+  margin: 0;
+}
+
+body{
+    background:
+        url(./images/Elpses.png) left top no-repeat,
+        url(./images/elp2.png) right bottom no-repeat,
+        #2F303A;
+        
+    color: white;
+}
+
+.main{
+    min-height: 100%;
+    position: relative;
+}
+
+.left, .rigth {
+    display: inline-block;
+    float: left;
+    
+}
+
+.left, .rigth {
+    width: 100%;
+}
+
+@media screen and (max-width:1920px) and (min-width:428px){
+    .left {
+        width: 30%;
+    }
+    .rigth {
+        width: 69%;
+    }
+    .left, .rigth {
+        position: relative;
+        transform: translateY(150%);
+    }
+    
+}
+
+.photo {
+    display: block;
+    width: 260px;
+    margin: 0 auto;
+}
+
+.info h3, .info p{
+    text-align: center;
+    font-family:Poppins;
+    padding:5px;
+}
+.rigth hr{
+    width: 200px;
+    
+}
+
+.project{
+    position:relative;
+    text-align: center;
+    font-family:Poppins;
+    top:15px;
+
+
+}
+
+.logo-project{
+    width: 60px;
+    height:60px;
+}
+
+.nav-bar {
+    clear: both;
+    position: relative;
+    bottom: 0;
+}
+
+.nav-link, .nav-social{
+  position:realative;
+  display: inline-block;
+  text-align: center;
+  padding:15px;
+  margin-left:10px;
+}
+
+.nav-social{
+  margin-left:5px;
+}
+.nav-social img{
+    width: 20px;
+    height:20px;
+    }
+.twit{
+  background:rgb(8, 160, 233);
+  border-radius: 3px;
+}
+.instg{
+  background:#ccc;
+  border-radius:5px;
+  margin-left:15px;
+
+}
+
+.fb{
+  background:rgb(59, 89, 152);;
+  border-radius:3px;
+  margin-left:15px;
+
+}
+
+.footer {
+  height: 80px;
+  margin-top: -80px;
+}
+.title{
+  font-family:24px;
+  color: rgba(137, 232, 239, 0.75);
+}
+.project-link{
+  font-size:18px;
+  color: rgba(137, 232, 239, 0.75);
+  position:relative;
+  left:5px;
+  top:-25px
+}
+.link1{
+    font-family:Poppins;
+    font-size:16px;
+    color:#ffffff;
+}
+.link2{
+    font-family:Poppins;
+    font-size:16px;
+    color:#ffffff;
+    margin-left:20px;
+}
+.link3{
+    font-family:Poppins;
+    font-size:16px;
+    color:#ffffff;
+    margin-left:20px;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  float:right;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.hvr-fade {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
+  background-color:rgba(137, 232, 239, 0.75);
+  color: white;
+}
