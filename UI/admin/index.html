@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>admin</title>
+</head>
+<body>
+    <header>
+        <h3>Hello, Anisie</h3>
+        <p> What would you like to do?</p>
+    </header>
+    <main>
+        <div class="row">
+            <div class="column-left">
+                <div class="left">
+                <div class="title" <h3>Logged in as Anisie</h3> <a href="#" id="logout" class="project-link"><img src="./images/out.png"> logout</a></div>
+                <div class="project">
+                    <div>Blog posts<a href="#" class="project-link"></a></div>
+                    <div class="posts">
+                    <a class="nav-link hvr-fade" href="#">Create</a>
+                    <a class="nav-link hvr-fade" href="#">Edit</a>
+                    <a class="nav-link hvr-fade" href="#">Delete</a> 
+                    </div> 
+                </div>
+                <div class="project">
+                    <div>Articles<a href="#" class="project-link"></a></div>
+                    <div class="posts">
+                    <a class="nav-link hvr-fade" href="#">Create</a>
+                    <a class="nav-link hvr-fade" href="#">Edit</a>
+                    <a class="nav-link hvr-fade" href="#">Delete</a> 
+                    </div> 
+                </div>
+                <div class="project">
+                    <div>Messages<a href="#" class="project-link"></a></div>
+                    <div class="posts">
+                    <a class="nav-link hvr-fade" href="#contact-message">View</a>
+                    <a class="nav-link hvr-fade" href="#">Delete</a> 
+                  </div> 
+                </div>
+                   <div class="project">
+                    <div>Profiles<a href="#" class="project-link"></a></div>
+                    <div class="posts">
+                    <a class="nav-link hvr-fade"  href="#profile-view">View</a>
+                    <a class="nav-link hvr-fade" href="#">Edit</a> 
+                  </div> 
+                </div>
+            </div>
+            </div>
+            <div class="column-right">
+                <div class="right">
+                    <div id="contact-message">
+                        <h3>My contacts messages</h3>
+                    </div>
+                    <div id="profile-view">
+                        <h3>Profile</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+    <footer class="navbar">
+        <a class="nav-link hvr-fade" href="../home/index.html">Home</a>
+        <a class="nav-link hvr-fade" href="../contactpage/index.html">Contact</a>
+        <a class="nav-link hvr-fade" href="../blogpage/index.html">Blog</a>
+        <a class="nav-link hvr-fade" href="../profilepage/index.html">Profile</a>
+        <a class="nav-link hvr-fade" href="../portfoliopage/index.ht">Portfolio</a>
+        <div class="social">
+            <a href="#"><img src="./images/twitter.png" class="twit hvr-fade"></a>
+            <a href="#"><img src="./images/instagram.png" class="instg hvr-fade"></a>
+            <a href="#"><img src="./images/facebook.png" class="fb hvr-fade"></a>
+        </div>
+    </footer>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    
+    <script src="../signinpage/index.js"></script>
+    <script src="../signinpage/auth.js"></script>
+</body>
+</html>

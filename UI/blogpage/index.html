@@ -22,6 +22,8 @@
                            <a class="more" href="#"> >>>> </a>
                         </p>
                         <div class='post-actions'>
+                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
+                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
                             <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
@@ -37,6 +39,8 @@
                           <a class=" more" href="#"> >>>> </a>
                         </p>
                         <div class='post-actions'>
+                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
+                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
                             <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
@@ -44,14 +48,16 @@
                      </div>    
                  </div>
                  <div class="block"> 
-                    <div class="post-image"><img src="./images/im7.jpg" class="image"> </div>
+                    <div id="image" class="post-image"><img src="./images/im7.jpg" class="image"> </div>
                     <div class="post-details">
-                        <em>Monday, 2 July 2020</em>
-                        <h4>Writing Custom Web Element Actions With TestProject</h4>
-                        <p>This is a good start, but it’s not enough. Before we can truly master a tool, we have to learn to use it in the correct way. That’s why this blog post introduces five best practices which describe the best way to use the TestProject framework ...
+                        <em id="date">Monday, 2 July 2020</em>
+                        <h4 id="title">Writing Custom Web Element Actions With TestProject</h4>
+                        <p id="message">This is a good start, but it’s not enough. Before we can truly master a tool, we have to learn to use it in the correct way. That’s why this blog post introduces five best practices which describe the best way to use the TestProject framework ...
                            <a class="more" href="#"> >>>> </a>
                         </p>
                         <div class='post-actions'>
+                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
+                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
                             <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
@@ -67,6 +73,8 @@
                           <a class="more" href="#"> >>>> </a>
                         </p>
                         <div class='post-actions'>
+                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
+                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
                             <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
                             <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
@@ -87,5 +95,14 @@
             <a href="#"><img src="./images/facebook.png" class="fb hvr-fade"></a>
         </div>
     </footer>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+    <script src="../blogpage/index.js"></script>
+    <script src="../blogpage/auth.js"></script>
+
 </body>
 </html>
