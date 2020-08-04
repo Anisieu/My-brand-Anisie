@@ -66,13 +66,16 @@ body{
   position:realative;
   display: inline-block;
   text-align: center;
-  padding:15px;
+  padding:5px;
+}
+
+.nav-link{
+  text-decoration: none;
+  color:#ffffff;
+  font-family:poppins;
   margin-left:10px;
 }
 
-.nav-social{
-  margin-left:5px;
-}
 .nav-social img{
     width: 20px;
     height:20px;
@@ -163,13 +166,14 @@ body{
   box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text], input[type=email], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #1762A7;
   border-radius: 4px;
   resize: vertical;
   background: transparent;
+  color:#ffffff;
 }
 
 label {

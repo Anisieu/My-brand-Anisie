@@ -20,19 +20,30 @@
                 <h2 class="title">Anisie Uwimana</h2>
               </div>
               <div class="container">
-                <form>
+                <form id="login-form">
                   <div class="col-75">
-                    <input type="text" id="password" name="password" placeholder="Username" style="height:60px">
+                    <input type="email" id="email" name="email" placeholder="Email" style="height:60px" required     oninvalid="this.setCustomValidity('invalid email')">
                    </div>
                   <div class="col-75">
-                    <input type="text" id="password" name="password" placeholder="Password" style="height:60px">
+                    <input type="password" id="password" name="password" placeholder="Password" style="height:60px" required     oninvalid="this.setCustomValidity('invalid password')">
+                  </div>
+                  <div class="col-75">
+                    <div id="message"></div>
                   </div>
                 <div class="row hvr-grow">
                   <input type="submit" value="Sign in">
                 </div>
+              </div>
         </form>
-     <\section>
+      </section>
    </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    
+    <script src="../signinpage/index.js"></script>
+    <script src="../signinpage/auth.js"></script>
 </body>
-
 </html>

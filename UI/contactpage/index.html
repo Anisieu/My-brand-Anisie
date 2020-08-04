@@ -25,34 +25,37 @@
         </section>
         <section class="rigth">
          <div class="container">
-            <form>
-            <div class="row">
-              <div class="col-25">
-                <label for="fname">Name</label>
+            <form id='contactform'>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="fname" name="firstname" placeholder="Your name.." required     oninvalid="this.setCustomValidity(' Your name is required')"
+                  oninput="this.setCustomValidity('')"  />
+                </div>
               </div>
-              <div class="col-75">
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Email</label>
+                </div>
+                <div class="col-75">
+                  <input type="email" id="lname" name="lastname" placeholder="Your email address.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
+                   oninput="this.setCustomValidity('')"  />
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="lname">Email</label>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">Message</label>
+                </div>
+                <div class="col-75">
+                  <textarea id="subject" name="subject" placeholder="Write your message.." style="height:200px" required     oninvalid="this.setCustomValidity('Your message is required')"
+                   oninput="this.setCustomValidity('')"  /></textarea>
+                </div>
               </div>
-              <div class="col-75">
-                <input type="text" id="lname" name="lastname" placeholder="Your email address..">
+              <div class="row hvr-grow">
+                <input type="submit" id="send" value="Send" >
               </div>
-            </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="subject">Message</label>
-              </div>
-              <div class="col-75">
-                <textarea id="subject" name="subject" placeholder="Write your message.." style="height:200px"></textarea>
-              </div>
-            </div>
-            <div class="row hvr-grow">
-              <input type="submit" value="Send">
-            </div>
             </form>
            </div>
          </section>
@@ -61,9 +64,10 @@
     <footer class="footer">
         <nav class="nav-bar">
             <ul class="nav-link">
-                <a  class="link1 hvr-fade">Home</a>
-                <a  class="link2 hvr-fade">Profile</a>
-                <a  class="link3 hvr-fade">Blog</a>
+                <a  class="nav-link hvr-fade "  href="../home/index.html">Home</a>
+                <a  class="nav-link hvr-fade" href="../blogpage/index.html">Blog</a>
+                <a  class="nav-link hvr-fade" href="../profilepage/index.html">Profile</a>
+                <a class="nav-link  hvr-fade" href="../portfoliopage/index.html">Portfolio</a>
             </ul>
             <ul class="nav-social">
                 <a href="#"><img src="./images/twitter.png" class="twit hvr-fade"></a>
@@ -72,6 +76,66 @@
             </ul>
         </nav>
     </footer>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBVhxK4NSd4vgDShVQ_sT7NFTjbx3oJ0QU",
+          authDomain: "anisie-brand.firebaseapp.com",
+          databaseURL: "https://anisie-brand.firebaseio.com",
+          projectId: "anisie-brand",
+          storageBucket: "anisie-brand.appspot.com",
+          messagingSenderId: "86557101911",
+          appId: "1:86557101911:web:6db2a963eac38788f43812",
+          measurementId: "G-MGXRQXKW5X"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        var db = firebase.firestore();
+
+        // send = document.getElementById('send')
+        // send.onclick = function(){
+
+        contactform = document.getElementById('contactform')
+        contactform.onsubmit = function(e){
+          e.preventDefault();
+          
+          name    = document.getElementById('fname').value;
+          email   = document.getElementById('lname').value;
+          message = document.getElementById('subject').value; 
+
+          // console.log(name);
+
+          db.collection("contacts").add({
+              name: name,
+              email: email,
+              message: message
+          })
+          .then(function(docRef) {
+              console.log("Document written with ID: ", docRef.id);
+              document.getElementById('fname').value='';
+              document.getElementById('lname').value='';
+              document.getElementById('subject').value='';
+
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+        }
+
+
+      </script>
 </body>
 
 </html>

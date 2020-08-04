@@ -55,9 +55,16 @@ body{
 .nav-bar {
     clear: both;
     position: relative;
+    font-family:Poppins;
     margin-left:30px;
     bottom: 0;
     width:100%;
+}
+
+.nav-link{
+  text-decoration: none;
+  color:#ffffff;
+  margin-left:20px;
 }
 .updates {
   position: relative;
