@@ -85,6 +85,9 @@ body{
   padding:15px;
   margin-left:10px;
 }
+.link1, .link2  {
+  text-decoration: none;
+}
 
 .nav-social{
   margin-left:5px;
@@ -137,12 +140,7 @@ body{
     color:#ffffff;
     margin-left:20px;
 }
-.link3{
-    font-family:Poppins;
-    font-size:16px;
-    color:#ffffff;
-    margin-left:20px;
-}
+
 
 .hvr-grow {
   display: inline-block;

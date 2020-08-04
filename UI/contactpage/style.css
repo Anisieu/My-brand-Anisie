@@ -66,13 +66,16 @@ body{
   position:realative;
   display: inline-block;
   text-align: center;
-  padding:15px;
+  padding:5px;
+}
+
+.nav-link{
+  text-decoration: none;
+  color:#ffffff;
+  font-family:poppins;
   margin-left:10px;
 }
 
-.nav-social{
-  margin-left:5px;
-}
 .nav-social img{
     width: 20px;
     height:20px;
