@@ -14,8 +14,13 @@ main {
   /* margin-top: 280px; */
 }
 
+
 .admin-action{
   display: none;
+}
+
+.login-handle .admin-action{
+  display: block;
 }
 
 header{
