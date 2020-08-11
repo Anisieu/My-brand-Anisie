@@ -48,8 +48,22 @@ body{
     color:#000000;
 }
 
-.notif{
+.notif1 div, .notif2 div{
+  color: #000;
+  font-size: 2em;
+  border-radius: 50%;
+  width: 50px;
+  margin:0 auto;
+  font-family: poppins;
+  border: 2px solid #000;
+}
+
+.notif3{
     width: 40px;
+}
+.notif3{
+  display:none;
+
 }
 
 .nav-bar {

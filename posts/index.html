@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <title>Contact page </title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class='main'>
+        <section class="rigth">
+         <div class="container">
+            <form id='contactform1'>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Image</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="image" name="firstname" placeholder=" Only the image link.." required     oninvalid="this.setCustomValidity(' Image link required')"
+                  oninput="this.setCustomValidity('')"  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">The title </label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="title" name="lastname" placeholder="Your artcle title.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
+                   oninput="this.setCustomValidity('')"  />
+                </div>
+              </div>
+              <div class="row hvr-grow">
+                <input type="submit" id="send" value="Send" >
+              </div>
+            </form>
+           </div>
+         </section>
+    </main>
+    
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBVhxK4NSd4vgDShVQ_sT7NFTjbx3oJ0QU",
+          authDomain: "anisie-brand.firebaseapp.com",
+          databaseURL: "https://anisie-brand.firebaseio.com",
+          projectId: "anisie-brand",
+          storageBucket: "anisie-brand.appspot.com",
+          messagingSenderId: "86557101911",
+          appId: "1:86557101911:web:6db2a963eac38788f43812",
+          measurementId: "G-MGXRQXKW5X"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        var db = firebase.firestore();
+
+        // send = document.getElementById('send')
+        // send.onclick = function(){
+
+        contactform1 = document.getElementById('contactform1')
+        contactform1.onsubmit = function(e){
+          e.preventDefault();
+          
+          image_url    = document.getElementById('image').value;
+          Title = document.getElementById('title').value; 
+
+          // console.log(name);
+
+          db.collection("Articles").add({
+              image_url:image_url,
+              Title: Title
+          })
+          .then(function(docRef) {
+              console.log("Document written with ID: ", docRef.id);
+              document.getElementById('image').value='';
+              document.getElementById('title').value='';
+
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+        }
+        
+
+
+      </script>
+</body>
+
+</html>

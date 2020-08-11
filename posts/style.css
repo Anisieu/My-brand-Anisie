@@ -7,10 +7,9 @@ html, body {
 body{
     background:
         url(./images/Elpses.png) left top no-repeat,
-        url(./images/elp2.png) right bottom no-repeat,
-        #2F303A;
+        url(./images/elp2.png) right bottom no-repeat;
         
-    color: white;
+    
 }
 
 .main{
@@ -18,14 +17,14 @@ body{
     position: relative;
 }
 
-.left, .rigth {
+.rigth {
     display: inline-block;
-    float: left;
+    margin:0 auto;
     padding:5px;
     
 }
 
-.left, .rigth {
+.rigth {
     width: 100%;
 }
 
@@ -38,14 +37,10 @@ body{
         width: 50%;
         transform: translateY(30%);
     }
-    .left, .rigth {
+.rigth {
         position: relative;
     }
     
-}
-
-#confirm-message{
-  display:none;
 }
 
 .info{
@@ -56,82 +51,6 @@ body{
     text-align: center;
     font-family:Poppins;
 }
-
-
-.nav-bar {
-    clear: both;
-    position: relative;
-    bottom: 0;
-    border-size:1px;
-    left:20px;
-}
-
-.nav-link, .nav-social{
-  position:realative;
-  display: inline-block;
-  text-align: center;
-  padding:5px;
-}
-
-.nav-link{
-  text-decoration: none;
-  color:#ffffff;
-  font-family:poppins;
-  margin-left:10px;
-}
-
-.nav-social img{
-    width: 20px;
-    height:20px;
-    }
-.twit{
-  background:rgb(8, 160, 233);
-  border-radius: 3px;
-}
-.instg{
-  background:#ccc;
-  border-radius:5px;
-  margin-left:15px;
-
-}
-
-.fb{
-  background:rgb(59, 89, 152);;
-  border-radius:3px;
-  margin-left:15px;
-
-}
-
-.footer {
-  height: 80px;
-  margin-top: -80px;
-}
-.title{
-  font-family:24px;
-  color: rgba(137, 232, 239, 0.75);
-}
-
-.link1{
-    font-family:Poppins;
-    font-size:16px;
-    cursor: pointer;
-    color:#ffffff;
-}
-.link2{
-    font-family:Poppins;
-    font-size:16px;
-    cursor: pointer;
-    color:#ffffff;
-    margin-left:20px;
-}
-.link3{
-    font-family:Poppins;
-    font-size:16px;
-    cursor: pointer;
-    color:#ffffff;
-    margin-left:20px;
-}
-
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;
@@ -177,7 +96,8 @@ input[type=text], input[type=email], select, textarea {
   border-radius: 4px;
   resize: vertical;
   background: transparent;
-  color:#ffffff;
+  color:black;
+  font-sze:36px;
 }
 
 label {

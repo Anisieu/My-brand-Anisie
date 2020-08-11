@@ -44,10 +44,6 @@ body{
     
 }
 
-#confirm-message{
-  display:none;
-}
-
 .info{
   position:relative;
 }
@@ -170,7 +166,7 @@ body{
   box-sizing: border-box;
 }
 
-input[type=text], input[type=email], select, textarea {
+input[type=text], input[type=email],input[type=date], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #1762A7;
@@ -202,7 +198,7 @@ input[type=submit]:hover {
   background-color: #1762A7;
 }
 
-.container {
+.comment-container {
   max-width: 400px;
   margin: 0 auto;
   border-radius: 5px;

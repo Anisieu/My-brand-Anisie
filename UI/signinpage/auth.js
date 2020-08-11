@@ -11,7 +11,7 @@ auth.onAuthStateChanged(user => {
     } else {
         console.log('user logged out');
         if(pageUrl.endsWith('/admin/index.html')) {
-            window.location.href = "../signinpage/index.html";
+            window.location.href = "../home/index.html";
         }
         // window.location.href = "../signinpage/index.html";
     }
@@ -46,7 +46,7 @@ if(logoutbutton){
    logoutbutton.addEventListener('click', ev => {
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
-        window.location.href = "../signinpage/index.html";
+        window.location.href = "../home/index.html";
     }).catch(function(error) {
         // An error happened.
         console.log(error)
@@ -55,32 +55,27 @@ if(logoutbutton){
 
 }
 
-content = document.getElementById('contact-message')
+//-----------------------------------------------------------
+// --------------------- Retrive comments ------------
+//-----------------------------------------------------------
 
+
+
+//-----------------------------------------------------------
+// --------------------- Retrive contact Message ------------
+//-----------------------------------------------------------
+
+content = document.getElementById('contact-message')
 if(content){
     db.collection("contacts").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        data = doc.data()
-        console.log(doc.id, data);
-
-        // toinsert  = '<hr>'
-        // toinsert += '<div>Name: '    + data.name + '</div>'
-        // toinsert += '<div>Email: '   + data.email + '</div>'
-        // toinsert += '<div>Message: ' + data.message + '</div>'
-
-        
-        //var img= 'https://www.mcall.com/resizer/iZP1aIg2hjV_66rPPDZS7Veccz8=/415x276/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/HWKWISLVNBCRTFQXBUATLA7BWI.jpg'
-        //<img src='${img}'></div>
-
-        
-        toinsert  = `
+        const data = doc.data();
+        const toinsert  = `
           <hr>
           <div>Name: ${data.name} </div>
           <div>Email: ${data.email} </div>
           <div>Message: ${data.message} </div>
         `;
-
-        console.log('toinsert:', toinsert)
         content.innerHTML += toinsert
     });
 });
@@ -88,4 +83,134 @@ if(content){
 }
 
 
+//----------------------------------------------------
+// ----------------------- BLOG POST FORM ------------
+//----------------------------------------------------
 
+const contactform = document.querySelector('#contactform');
+const img_url = document.querySelector('#contactform #image');
+const date = document.querySelector('#contactform #date');
+const title = document.querySelector('#contactform #title'); 
+const message = document.querySelector('#contactform #message');
+
+
+//------------------- retrieve blogpost before update
+//get the post_id from the url
+const post_id = new URL(document.location.href).searchParams.get('post-id');
+
+if(post_id){
+  // we can retrieve the blogpost only if the post_id is available
+
+  db.collection("posts").doc(post_id)
+  .get()
+  .then(function(doc) {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      const data = doc.data();
+      img_url.value = data.img_url;
+      date.value = data.date;
+      title.value = data.title;
+      message.value = data.message;
+
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
+       
+}
+
+// ---------------- add or update blogpost
+
+contactform.onsubmit = function(e){
+  e.preventDefault();
+
+  if(post_id){
+    // update
+    db.collection("posts").doc(post_id).update({
+        img_url: img_url.value,
+        date: date.value,
+        title: title.value,
+        message: message.value
+    })
+    .then(function() {
+        console.log("Document updated");
+        img_url.value='';
+        date.value='';
+        title.value='';
+        message.value='';
+        document.getElementById('confirm-message2').style.display='block';
+        setTimeout(()=>{  
+          document.getElementById('confirm-message2').style.display='none';
+        }, 5000);
+
+    })
+    .catch(function(error) {
+        console.error("Error updating document: ", error);
+    });
+  }
+  else{
+    // insert or add
+    db.collection("posts").add({
+        img_url:img_url.value,
+        date: date.value,
+        title: title.value,
+        message: message.value
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        img_url.value='';
+        date.value='';
+        title.value='';
+        message.value='';
+        document.getElementById('confirm-message2').style.display='block';
+        setTimeout(()=>{  
+          document.getElementById('confirm-message2').style.display='none';
+        }, 5000);
+
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+  }
+}
+
+//------------------create an article ...........
+//...............................................
+
+contactform1 = document.getElementById('contactform1')
+contactform1.onsubmit = function(e){
+  e.preventDefault();
+
+  image_url    = document.getElementById('image').value;
+  Title = document.getElementById('title').value; 
+  project_link = document.getElementById('link').value;
+  category = document.getElementById('category').value;
+
+  // console.log(name);
+
+  db.collection("Articles").add({
+      image_url: image_url,
+      Title: Title,
+      project_link: project_link,
+      category: category
+  })
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+      document.getElementById('image').value='';
+      document.getElementById('title').value='';
+      document.getElementById('link').value='';
+      document.getElementById('category').value='';
+      document.getElementById('confirm-message1').style.display='block';
+      setTimeout(()=>{  
+        document.getElementById('confirm-message1').style.display='none';
+      }, 5000);
+
+
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}

@@ -16,59 +16,161 @@
         <div class="row">
             <div class="column-left">
                 <div class="left">
-                <div class="title" <h3>Logged in as Anisie</h3> <a href="#" id="logout" class="project-link"><img src="./images/out.png"> logout</a></div>
-                <div class="project">
-                    <div>Blog posts<a href="#" class="project-link"></a></div>
-                    <div class="posts">
-                    <a class="nav-link hvr-fade" href="#">Create</a>
-                    <a class="nav-link hvr-fade" href="#">Edit</a>
-                    <a class="nav-link hvr-fade" href="#">Delete</a> 
-                    </div> 
+                    <div class="title" <h3>Logged in as Anisie</h3> <a href="#" id="logout" class="project-link"><img src="./images/out.png"> logout</a></div>
+                    <div class="project">
+                        <div>Blog posts<a href="#" class="project-link"></a></div>
+                        <div class="posts">
+                        <a class="nav-link hvr-fade" id="posts" href="#blog-posts">Create</a>
+                        <a class="nav-link hvr-fade" href="../blogpage/index.html">Edit</a>
+                        <a class="nav-link hvr-fade" href="../blogpage/index.html"href="">Delete</a>
+                        <a class="nav-link hvr-fade" id="posts" href="#received-comments">comments</a> 
+                        </div> 
+                    </div>
+                    <div class="project">
+                        <div>Articles<a href="#" class="project-link"></a></div>
+                        <div class="posts">
+                        <a class="nav-link hvr-fade" href="#MY-works">Create</a>
+                        <a class="nav-link hvr-fade" href="#">Edit</a>
+                        <a class="nav-link hvr-fade" href="#">Delete</a> 
+                        </div> 
+                    </div>
+                    <div class="project">
+                        <div>Messages<a href="#" class="project-link"></a></div>
+                        <div class="posts">
+                            <a class="nav-link hvr-fade" href="#contact-message">View</a>
+                            <a class="nav-link hvr-fade" href="#">Delete</a> 
+                        </div> 
+                    </div>
+                    <div class="project">
+                        <div>Profiles<a href="#" class="project-link"></a></div>
+                        <div class="posts">
+                            <a class="nav-link hvr-fade"  href="../profilepage/index.html">View</a>
+                            <a class="nav-link hvr-fade" href="#">Edit</a> 
+                        </div> 
+                   </div>
                 </div>
-                <div class="project">
-                    <div>Articles<a href="#" class="project-link"></a></div>
-                    <div class="posts">
-                    <a class="nav-link hvr-fade" href="#">Create</a>
-                    <a class="nav-link hvr-fade" href="#">Edit</a>
-                    <a class="nav-link hvr-fade" href="#">Delete</a> 
-                    </div> 
-                </div>
-                <div class="project">
-                    <div>Messages<a href="#" class="project-link"></a></div>
-                    <div class="posts">
-                    <a class="nav-link hvr-fade" href="#contact-message">View</a>
-                    <a class="nav-link hvr-fade" href="#">Delete</a> 
-                  </div> 
-                </div>
-                   <div class="project">
-                    <div>Profiles<a href="#" class="project-link"></a></div>
-                    <div class="posts">
-                    <a class="nav-link hvr-fade"  href="#profile-view">View</a>
-                    <a class="nav-link hvr-fade" href="#">Edit</a> 
-                  </div> 
-                </div>
-            </div>
             </div>
             <div class="column-right">
                 <div class="right">
+                      <div id="MY-works">
+                         <h3> Add a new project</h3>
+                         <div class="container">
+                           <div id='confirm-message1'> Your project is saved!!!</div>
+                            <form id='contactform1'>
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="fname">Image</label>
+                                </div>
+                                <div class="col-75">
+                                  <input type="text" id="image" placeholder=" Only the image link.." required     oninvalid="this.setCustomValidity(' Image link is required')"
+                                  oninput="this.setCustomValidity('')"  />
+                                </div>
+                                  <div class="col-25">
+                                  <label for="fname">The title</label>
+                                </div>
+                                <div class="col-75">
+                                  <input type="text" id="title" placeholder=" The project title.." required     oninvalid="this.setCustomValidity(' The project title is required')"
+                                  oninput="this.setCustomValidity('')"  />
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="lname">The link </label>
+                                </div>
+                                <div class="col-75">
+                                  <input type="text" id="link" placeholder="Your project link.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
+                                   oninput="this.setCustomValidity('')"  />
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="lname">Category</label>
+                                </div>
+                                <div class="col-75">
+                                  <select name="category" id="category">
+                                      <option value="mobile">Web and Mobile</option>
+                                      <option value="datascience">Data Science</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="row hvr-grow">
+                                <br><br>
+                                <input type="submit" id="send" value="Send" >
+                                <br><br><br>
+                              </div>
+                          </form>
+                       </div>
+                    </div>
+                    <div id="received-comments">
+                        <h3> User comments</h3>
+                    </div>
                     <div id="contact-message">
                         <h3>My contacts messages</h3>
                     </div>
-                    <div id="profile-view">
-                        <h3>Profile</h3>
-                    </div>
+
+                    <div id="blog-posts">
+                        <h3>Create or update blog post</h3>
+                        <div class="container">
+                            <div id='confirm-message2'> Your post is saved!!!</div>
+                            <form id='contactform'>
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="fname">Image</label>
+                                </div>
+                                <div class="col-75">
+                                  <input type="text" id="image"  placeholder="Image link.." required     oninvalid="this.setCustomValidity(' Image link required')"
+                                  oninput="this.setCustomValidity('')"  />
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="lname">Date</label>
+                                </div>
+                                <div class="col-75">
+                                  <input type="date" id="date"  placeholder=" The creation date.." required   oninvalid="this.setCustomValidity('Enter the date')"
+                                   oninput="this.setCustomValidity('')" />
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="lname">Blog title</label>
+                                </div>
+                                <div class="col-75">
+                                  <input type="text" id="title"  placeholder="The post title.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
+                                   oninput="this.setCustomValidity('')" />
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="subject">Content</label>
+                                </div>
+                                <div class="col-75">
+                                  <textarea id="message"  placeholder="Write your post content.." style="height:200px" required     oninvalid="this.setCustomValidity('Your message is required')"
+                                   oninput="this.setCustomValidity('')"  /></textarea>
+                                </div>
+                              </div>
+                                <div class="row hvr-grow">
+                                <br>
+                                <input type="submit" id="send" value="Send" >
+                              <br>
+                              </div>
+                            </form>
+                       </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-
-
     </main>
     <footer class="navbar">
         <a class="nav-link hvr-fade" href="../home/index.html">Home</a>
         <a class="nav-link hvr-fade" href="../contactpage/index.html">Contact</a>
         <a class="nav-link hvr-fade" href="../blogpage/index.html">Blog</a>
         <a class="nav-link hvr-fade" href="../profilepage/index.html">Profile</a>
-        <a class="nav-link hvr-fade" href="../portfoliopage/index.ht">Portfolio</a>
+        <a class="nav-link hvr-fade" href="../portfoliopage/index.html">Portfolio</a>
         <div class="social">
             <a href="#"><img src="./images/twitter.png" class="twit hvr-fade"></a>
             <a href="#"><img src="./images/instagram.png" class="instg hvr-fade"></a>

@@ -12,76 +12,37 @@
         <h1>Welcome to Anisie blog! </h1>
     </header>
     <main>
-        <div class="column">
-                <div class="block"> 
-                    <div class="post-image"><img src="./images/im2.jpg" class="image"> </div>
-                    <div class="post-details">
-                        <em>Monday, 2 July 2020</em>
-                        <h4>Learning how to develop GraphQL solutions with .NET</h4>
-                        <p>If you are building a data-driven web or mobile application, then key concerns you need to address is how data will be surfaced to the client and how the client can update the state on the server. This is not a new problem, and one that we have been solving for decades...
-                           <a class="more" href="#"> >>>> </a>
-                        </p>
-                        <div class='post-actions'>
-                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
-                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
-                            <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
-                        </div>
-                     </div>    
+        
+        <div id="blog-post-container" class="column"></div>
+        <div id="comment-container" class="column">
+            <h2>Comment</h2>
+         <div class="comment-container">
+          <div id='confirm-message3'> Your comment is saved!!!</div>
+            <form id='commentform'>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Name</label>
                 </div>
-                <div class="block"> 
-                    <div class="post-image"><img src="./images/im6.jpg" class="image"> </div>
-                    <div class="post-details">
-                        <em>Monday, 2 July 2020</em>
-                        <h4>Reading Information From an XML File</h4>
-                        <p>During this blog post we will read the input data of our batch job from an XML file which contains the student information of an online course. To be more specific, the XML file contains a student list that provides the following information to our batch job...
-                          <a class=" more" href="#"> >>>> </a>
-                        </p>
-                        <div class='post-actions'>
-                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
-                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
-                            <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
-                        </div>
-                     </div>    
-                 </div>
-                 <div class="block"> 
-                    <div id="image" class="post-image"><img src="./images/im7.jpg" class="image"> </div>
-                    <div class="post-details">
-                        <em id="date">Monday, 2 July 2020</em>
-                        <h4 id="title">Writing Custom Web Element Actions With TestProject</h4>
-                        <p id="message">This is a good start, but it’s not enough. Before we can truly master a tool, we have to learn to use it in the correct way. That’s why this blog post introduces five best practices which describe the best way to use the TestProject framework ...
-                           <a class="more" href="#"> >>>> </a>
-                        </p>
-                        <div class='post-actions'>
-                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
-                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
-                            <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
-                        </div>
-                     </div>    
+                <div class="col-75">
+                  <input type="text" id="user_name"  placeholder=" Enter your name.." required     oninvalid="this.setCustomValidity(' Your name is required')"
+                  oninput="this.setCustomValidity('')"  />
                 </div>
-                <div class="block"> 
-                    <div class="post-image"><img src="./images/im5.jpeg" class="image"> </div>
-                    <div class="post-details">
-                        <em>Monday, 2 July 2020</em>
-                        <h4>Learning how to develop GraphQL solutions with .NET</h4>
-                        <p>If you are building a data-driven web or mobile application, then key concerns you need to address is how data will be surfaced to the client and how the client can update the state on the server. This is not a new problem, and one that we have been solving for decades...
-                          <a class="more" href="#"> >>>> </a>
-                        </p>
-                        <div class='post-actions'>
-                            <a href="#" class="admin-action"><img src="./images/edit.png" class="hvr-fade"></a>
-                            <a href="#" class="admin-action"><img src="./images/delete.png" class="hvr-fade"></a>
-                            <a href="#"><img src="./images/like.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>
-                            <a href="#"><img src="./images/sh.png" class=" hvr-fade"></a>
-                        </div>
-                     </div>    
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">comments</label>
                 </div>
-            </div>
+                <div class="col-75">
+                  <textarea id="user_comment"  placeholder="Write your comment .." style="height:200px" required     oninvalid="this.setCustomValidity('Please leave your comment')"
+                   oninput="this.setCustomValidity('')"  /></textarea>
+                </div>
+              </div>
+              <div class="row hvr-grow">
+                <input type="submit" id="comment" value="Send" >
+              </div>
+            </form>
+           </div>
+        </div>
     </main>
     <footer class="navbar">
         <a class="nav-link hvr-fade" href="../home/index.html">Home</a>
