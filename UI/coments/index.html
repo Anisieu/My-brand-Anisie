@@ -24,38 +24,28 @@
             </div>
         </section>
         <section class="rigth">
-         <div class="container">
-            <div id='confirm-message'> Your message is saved!!!</div>
-            <form id='contactform'>
+         <div class="comment-container">
+            <form id='commentform'>
               <div class="row">
                 <div class="col-25">
                   <label for="fname">Name</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" id="fname" name="firstname" placeholder="Your name.." required     oninvalid="this.setCustomValidity(' Your name is required')"
+                  <input type="text" id="user_name"  placeholder=" Enter your name.." required     oninvalid="this.setCustomValidity(' Your name is required')"
                   oninput="this.setCustomValidity('')"  />
                 </div>
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Email</label>
+                  <label for="subject">comments</label>
                 </div>
                 <div class="col-75">
-                  <input type="email" id="lname" name="lastname" placeholder="Your email address.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
-                   oninput="this.setCustomValidity('')"  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="subject">Message</label>
-                </div>
-                <div class="col-75">
-                  <textarea id="subject" name="subject" placeholder="Write your message.." style="height:200px" required     oninvalid="this.setCustomValidity('Your message is required')"
+                  <textarea id="user_comment"  placeholder="Write your comment .." style="height:200px" required     oninvalid="this.setCustomValidity('Please leave your comment')"
                    oninput="this.setCustomValidity('')"  /></textarea>
                 </div>
               </div>
               <div class="row hvr-grow">
-                <input type="submit" id="send" value="Send" >
+                <input type="submit" id="comment" value="Send" >
               </div>
             </form>
            </div>
@@ -108,32 +98,24 @@
         // send = document.getElementById('send')
         // send.onclick = function(){
 
-        contactform = document.getElementById('contactform')
-        contactform.onsubmit = function(e){
+        
+        commentform= document.getElementById('commentform')
+        commentform.onsubmit = function(e){
           e.preventDefault();
           
-          name    = document.getElementById('fname').value;
-          email   = document.getElementById('lname').value;
-          message = document.getElementById('subject').value; 
+          user_name    = document.getElementById('user_name').value;
+          user_comment = document.getElementById('user_comment').value; 
 
           // console.log(name);
 
-          db.collection("contacts").add({
-              name: name,
-              email: email,
-              message: message
+          db.collection("comments").add({
+              user_name: user_name,
+              user_comment: user_comment
           })
           .then(function(docRef) {
               console.log("Document written with ID: ", docRef.id);
-              document.getElementById('fname').value='';
-              document.getElementById('lname').value='';
-              document.getElementById('subject').value='';
-              
-              document.getElementById('confirm-message').style.display='block';
-              setTimeout(()=>{  
-                document.getElementById('confirm-message').style.display='none';
-              }, 5000);
-
+              document.getElementById('user_name').value='';
+              document.getElementById('user_comment').value='';
           })
           .catch(function(error) {
               console.error("Error adding document: ", error);

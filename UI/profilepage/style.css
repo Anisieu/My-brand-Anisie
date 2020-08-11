@@ -58,8 +58,12 @@ body{
   border: 2px solid #000;
 }
 
-.notif{
+.notif3{
     width: 40px;
+}
+.notif3{
+  display:none;
+
 }
 
 .nav-bar {

@@ -22,7 +22,8 @@
                         <div class="posts">
                         <a class="nav-link hvr-fade" id="posts" href="#blog-posts">Create</a>
                         <a class="nav-link hvr-fade" href="../blogpage/index.html">Edit</a>
-                        <a class="nav-link hvr-fade" href="../blogpage/index.html"href="">Delete</a> 
+                        <a class="nav-link hvr-fade" href="../blogpage/index.html"href="">Delete</a>
+                        <a class="nav-link hvr-fade" id="posts" href="#received-comments">comments</a> 
                         </div> 
                     </div>
                     <div class="project">
@@ -54,6 +55,7 @@
                       <div id="MY-works">
                          <h3> Add a new project</h3>
                          <div class="container">
+                           <div id='confirm-message1'> Your project is saved!!!</div>
                             <form id='contactform1'>
                               <div class="row">
                                 <div class="col-25">
@@ -102,19 +104,24 @@
                           </form>
                        </div>
                     </div>
+                    <div id="received-comments">
+                        <h3> User comments</h3>
+                    </div>
                     <div id="contact-message">
                         <h3>My contacts messages</h3>
                     </div>
+
                     <div id="blog-posts">
-                        <h3>Create blog post</h3>
+                        <h3>Create or update blog post</h3>
                         <div class="container">
+                            <div id='confirm-message2'> Your post is saved!!!</div>
                             <form id='contactform'>
                               <div class="row">
                                 <div class="col-25">
                                   <label for="fname">Image</label>
                                 </div>
                                 <div class="col-75">
-                                  <input type="text" id="image" name="firstname" placeholder="Image link.." required     oninvalid="this.setCustomValidity(' Image link required')"
+                                  <input type="text" id="image"  placeholder="Image link.." required     oninvalid="this.setCustomValidity(' Image link required')"
                                   oninput="this.setCustomValidity('')"  />
                                 </div>
                               </div>
@@ -123,7 +130,7 @@
                                   <label for="lname">Date</label>
                                 </div>
                                 <div class="col-75">
-                                  <input type="text" id="date" name="lastname" placeholder=" The creation date.." required   oninvalid="this.setCustomValidity('Enter the date')"
+                                  <input type="date" id="date"  placeholder=" The creation date.." required   oninvalid="this.setCustomValidity('Enter the date')"
                                    oninput="this.setCustomValidity('')" />
                                 </div>
                               </div>
@@ -133,7 +140,7 @@
                                   <label for="lname">Blog title</label>
                                 </div>
                                 <div class="col-75">
-                                  <input type="text" id="title" name="lastname" placeholder="The post title.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
+                                  <input type="text" id="title"  placeholder="The post title.." required   oninvalid="this.setCustomValidity('Enter a valid email')"
                                    oninput="this.setCustomValidity('')" />
                                 </div>
                               </div>
@@ -142,12 +149,14 @@
                                   <label for="subject">Content</label>
                                 </div>
                                 <div class="col-75">
-                                  <textarea id="message" name="subject" placeholder="Write your post content.." style="height:200px" required     oninvalid="this.setCustomValidity('Your message is required')"
+                                  <textarea id="message"  placeholder="Write your post content.." style="height:200px" required     oninvalid="this.setCustomValidity('Your message is required')"
                                    oninput="this.setCustomValidity('')"  /></textarea>
                                 </div>
                               </div>
-                              <div class="row hvr-grow">
+                                <div class="row hvr-grow">
+                                <br>
                                 <input type="submit" id="send" value="Send" >
+                              <br>
                               </div>
                             </form>
                        </div>

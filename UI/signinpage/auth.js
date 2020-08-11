@@ -11,7 +11,7 @@ auth.onAuthStateChanged(user => {
     } else {
         console.log('user logged out');
         if(pageUrl.endsWith('/admin/index.html')) {
-            window.location.href = "../signinpage/index.html";
+            window.location.href = "../home/index.html";
         }
         // window.location.href = "../signinpage/index.html";
     }
@@ -46,7 +46,7 @@ if(logoutbutton){
    logoutbutton.addEventListener('click', ev => {
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
-        window.location.href = "../signinpage/index.html";
+        window.location.href = "../home/index.html";
     }).catch(function(error) {
         // An error happened.
         console.log(error)
@@ -54,6 +54,12 @@ if(logoutbutton){
 })
 
 }
+
+//-----------------------------------------------------------
+// --------------------- Retrive comments ------------
+//-----------------------------------------------------------
+
+
 
 //-----------------------------------------------------------
 // --------------------- Retrive contact Message ------------
@@ -135,6 +141,11 @@ contactform.onsubmit = function(e){
         date.value='';
         title.value='';
         message.value='';
+        document.getElementById('confirm-message2').style.display='block';
+        setTimeout(()=>{  
+          document.getElementById('confirm-message2').style.display='none';
+        }, 5000);
+
     })
     .catch(function(error) {
         console.error("Error updating document: ", error);
@@ -150,10 +161,15 @@ contactform.onsubmit = function(e){
     })
     .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
-        image.value='';
+        img_url.value='';
         date.value='';
         title.value='';
         message.value='';
+        document.getElementById('confirm-message2').style.display='block';
+        setTimeout(()=>{  
+          document.getElementById('confirm-message2').style.display='none';
+        }, 5000);
+
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -187,6 +203,11 @@ contactform1.onsubmit = function(e){
       document.getElementById('title').value='';
       document.getElementById('link').value='';
       document.getElementById('category').value='';
+      document.getElementById('confirm-message1').style.display='block';
+      setTimeout(()=>{  
+        document.getElementById('confirm-message1').style.display='none';
+      }, 5000);
+
 
   })
   .catch(function(error) {

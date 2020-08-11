@@ -12,8 +12,37 @@
         <h1>Welcome to Anisie blog! </h1>
     </header>
     <main>
-        <div id="blog-post-container" class="column">
-            </div>
+        
+        <div id="blog-post-container" class="column"></div>
+        <div id="comment-container" class="column">
+            <h2>Comment</h2>
+         <div class="comment-container">
+          <div id='confirm-message3'> Your comment is saved!!!</div>
+            <form id='commentform'>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="user_name"  placeholder=" Enter your name.." required     oninvalid="this.setCustomValidity(' Your name is required')"
+                  oninput="this.setCustomValidity('')"  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">comments</label>
+                </div>
+                <div class="col-75">
+                  <textarea id="user_comment"  placeholder="Write your comment .." style="height:200px" required     oninvalid="this.setCustomValidity('Please leave your comment')"
+                   oninput="this.setCustomValidity('')"  /></textarea>
+                </div>
+              </div>
+              <div class="row hvr-grow">
+                <input type="submit" id="comment" value="Send" >
+              </div>
+            </form>
+           </div>
+        </div>
     </main>
     <footer class="navbar">
         <a class="nav-link hvr-fade" href="../home/index.html">Home</a>

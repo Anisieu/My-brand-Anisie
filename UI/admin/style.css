@@ -28,12 +28,13 @@ main {
   border-radius:20px;
   border-style:ridge;
   padding-left: 20px;
+  margin-bottom:15px
 }
 
-#MY-works, #blog-posts, #contact-message{
+#confirm-message1,#confirm-message2, #received-comments,#MY-works, #blog-posts, #contact-message{
   display:none;
 }
-#MY-works:target, #blog-posts:target, #contact-message:target{
+#received-comments:target, #MY-works:target, #blog-posts:target, #contact-message:target{
   display:block;
 }
 
@@ -187,7 +188,7 @@ main {
 }
 
 
-input[type=text], input[type=email], select, textarea {
+input[type=text],input[type=date], input[type=email], select, textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 12px;
