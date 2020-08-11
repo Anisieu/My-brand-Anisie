@@ -9,7 +9,7 @@ router.get("/posts", async (req, res) => {
 
 router.post("/posts", async (req, res) => {
   const post = new Post({
-    title: req.body.title,
+    date: req.body.date,
     title: req.body.title,
     content: req.body.content
   });
