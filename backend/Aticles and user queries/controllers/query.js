@@ -5,7 +5,7 @@ function isValidEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-exports.all = async(req, res) => {
+exports.getAll = async(req, res) => {
     const query = await Query.find();
     res.send(query);
 };
@@ -31,7 +31,7 @@ exports.create = async(req, res) => {
   
 };
 
-exports.get = async(req, res) => {
+exports.getOne = async(req, res) => {
     try {
         const query = await Query.findOne({ _id: req.params.id });
         res.send(query);

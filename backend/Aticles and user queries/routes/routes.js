@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const post = require("../controllers/post");
+const blog = require("../controllers/blog");
 const query = require("../controllers/query");
 
-router.get("/posts", post.all);
+router.get("/blogs", blog.getAll);
 
-router.post("/posts", post.create);
+router.post("/blogs", blog.create);
 
-router.get("/posts/:id", post.get);
+router.get("/blogs/:id", blog.getOne);
 
-router.get("/queries", query.all);
+router.get("/queries", query.getAll);
 
 router.post("/queries", query.create);
 
-router.get("/queries/:id", query.get);
+router.get("/queries/:id", query.getOne);
 
 
 // router.patch("/posts/:id", async (req, res) => {
