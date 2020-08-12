@@ -4,10 +4,13 @@ const routes = require("./routes/routes");
 const bodyParser = require("body-parser");
 const expressValidator = require("express-validator");
 const expresSession = require("express-session");
+const schema=require("schema");
 
-const app = express();
-const PORT= 5000;
+const PORT= 6000;
+// app.post('/signup', signUpvalidator, (req,res)=>res.send('A @hapi/joi validations'));
 
+app.use(express)
+app.use(schema)
 app.use(bodyParser.json())
 app.use(expressValidator())
 app.use(expresSession({secret:'max', saveUninitialized:false, resave:false} ))
