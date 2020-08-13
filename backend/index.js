@@ -4,7 +4,7 @@ const routes = require("./routes/routes");
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT= 6000;
+const PORT= 5000;
 
 app.use(bodyParser.json())
 app.use(routes)
@@ -13,7 +13,7 @@ app.use(routes)
 mongoose
   .connect("mongodb://localhost:27017/acmedb", { useNewUrlParser: true })
   .then(() => {
-    console.log("db created")
+    console.log("db connected successfully")
 
 
   })
@@ -22,6 +22,6 @@ mongoose
   })
 
   app.listen(PORT, () => {
-    console.log("Server has started!");
+    console.log("Server has started on port "+ PORT);
 });
 
