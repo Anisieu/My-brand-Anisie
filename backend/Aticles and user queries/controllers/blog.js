@@ -1,14 +1,25 @@
 const Blog = require("../models/blog");
 
 
+
+
 exports.getAll= async(req, res) => { 
     const blogs = await Blog.find();
     res.send(blogs);
 };
 
 exports.create = async(req, res) => {
+
     const { date,title,image_ulr, content } = req.body
-    if (date && title && image_ulr && content){
+
+    if(isNaN(Date.parse(date))){
+        res.send("Invalid date")
+    }
+    else if(!(date && title && image_ulr && content)){
+        res.send("All input fields are required")
+
+    }
+    else{
         const blog = new Blog({
             date: req.body.date,
             title: req.body.title,
@@ -17,9 +28,6 @@ exports.create = async(req, res) => {
         });
         await blog.save();
         res.send(blog);
-    }
-    else{
-        res.send("Invalid input")
     }
 };
 
