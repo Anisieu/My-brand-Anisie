@@ -34,7 +34,9 @@ exports.create = async(req, res) => {
 exports.getOne = async(req, res) => { 
     try {
         const blog = await Blog.findOne({ _id: req.params.id });
-        res.send(blog);
+        const {__v,...others}=blog
+        Console.log("blog",blog)
+        res.send(others);
     } catch {
         res.status(404);
         res.send({ error: "Blog doesn't exist!" });
