@@ -1,25 +1,24 @@
-const Query = require("../models/query");
+const Query = require("../model/query");
+const { check, validationResult } = require("express-validator/check");
 
-function isValidEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
 
 exports.getAll = async(req, res) => {
-    const query = await Query.find();
-    res.send(query);
+    const queries = await Query.find();
+    res.send(queries);
+
 };
 
-exports.create = async(req, res) => {
-    const {name, email, message } = req.body
 
-    if (!isValidEmail(email)){
-        res.send('invalid email');
+exports.create = async(req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array()
+        });
     }
-    else if (!(name && message &&  email)){
-        res.send("All inputs are required")
-    }
-    else{
+
+
+    if (req.user.admin == false) {
         const query = new Query({
             name: req.body.name,
             email: req.body.email,
@@ -27,8 +26,12 @@ exports.create = async(req, res) => {
         });
         await query.save();
         res.send(query);
+    } else {
+        //res.json(user);
+        res.json("Unauthorised access")
     }
-  
+
+
 };
 
 exports.getOne = async(req, res) => {
@@ -40,3 +43,46 @@ exports.getOne = async(req, res) => {
         res.send({ error: "Comment doesn't exist!" });
     }
 };
+
+// exports.patch = async(req, res) => {
+//     if (req.user.admin == true) {
+//         try {
+//             const query = await Query.findOne({ _id: req.params.id });
+
+//             if (req.body.name) {
+//                 query.name = req.body.name;
+//             }
+
+//             if (req.body.email) {
+//                 query.email = req.body.email;
+//             }
+//             if (req.body.message) {
+//                 query.message = req.body.message;
+//             }
+//             await query.save();
+//             res.send(query);
+//         } catch {
+//             res.status(404);
+//             res.send({ error: "query doesn't exist!" });
+//         }
+//     } else {
+//         //res.json(user);
+//         res.json("Unauthorised access")
+//     }
+// };
+
+// exports.delete = async(req, res) => {
+//     if (req.user.admin == true) {
+
+//         try {
+//             await Query.deleteOne({ _id: req.params.id });
+//             res.status(204).send('Deleted');
+//         } catch {
+//             res.status(404);
+//             res.send({ error: "Query doesn't exist!" });
+//         }
+//     } else {
+//         //res.json(user);
+//         res.json("Unauthorised access")
+//     }
+// };
