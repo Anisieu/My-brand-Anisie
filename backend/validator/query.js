@@ -1,4 +1,4 @@
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 
 exports.queryvalidator = [
     check("name", "Please enter your name")

@@ -1,6 +1,6 @@
 const Blog = require("../model/blog");
 const blogvar = require("../validator/blog");
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 
 exports.create = async(req, res) => {
     const errors = validationResult(req);
@@ -30,21 +30,15 @@ exports.create = async(req, res) => {
 exports.getAll = async(req, res) => {
     const blogs = await Blog.find();
     res.send(blogs);
-
 };
 
 exports.getOne = async(req, res) => {
     try {
         const blog = await Blog.findOne({ _id: req.params.id });
-        if(blog){
-            res.send(blog);
-        }else{
-            res.status(404);
-            res.send({ error: "Blog doesn't exist!" });
-        }
+        res.send(blog);
     } catch {
-        res.status(500);
-        res.send({ error: "Internal Error!" });
+        res.status(404);
+        res.send({ error: "Blog does not exist!" });
     }
 };
 
@@ -86,13 +80,28 @@ exports.delete = async(req, res) => {
 
         try {
             await Blog.deleteOne({ _id: req.params.id });
-            res.status(204).send('Deleted');
+            res.status(200).send('Deleted');
         } catch {
             res.status(404);
             res.send({ error: "blog doesn't exist!" });
         }
     } else {
         //res.json(user);
+        res.status(403);
         res.json("Unauthorised access")
     }
+};
+
+exports.like = async(req, res) => {
+    Blog.findByIdAndUpdate(req.params.id,{
+        $inc: {'like': 1 } //$push:{likes: req.user._id}
+    }, {
+        new: true
+    }).exec((err, result) => {
+        if(err){
+            return res.status(400).json({error: err})
+        }else{
+            res.json(result)
+        }
+    })
 };

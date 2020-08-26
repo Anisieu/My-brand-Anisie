@@ -40,7 +40,7 @@ exports.getOne = async(req, res) => {
         res.send(query);
     } catch {
         res.status(404);
-        res.send({ error: "Comment doesn't exist!" });
+        res.send({ error: "Query doesn't exist!" });
     }
 };
 
