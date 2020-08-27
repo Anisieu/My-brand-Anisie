@@ -6,20 +6,20 @@ const app = require("../index");
 chai.use(chaiHttp);
 chai.should();
 
-describe("Test for making a comment", () =>{
+describe("Test for making a comment", () => {
 
-    it("should return 200 for a successful sent comment", (done) =>{
+    it("should return 200 for a successful sent comment", (done) => {
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY0NThhMWY5MDI3YWIyOGMyMTQxMDJhIiwiYWRtaW4iOmZhbHNlfSwiaWF0IjoxNTk4MzkyODYzLCJleHAiOjE1OTg1NjU2NjN9.2A1NV0Srvx-opLhi_F08hja61EuD7ju0gam4JvFLuaI"
-    const newcomment = {
-        name: "Any",
-        email: "any@gmail.com",
-        message : "any comment"
-      }
-    const blogId = "5f4640f7b926436796b33685"
-    chai.request(app)
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY0NThhMWY5MDI3YWIyOGMyMTQxMDJhIiwiYWRtaW4iOmZhbHNlfSwiaWF0IjoxNTk4MzkyODYzLCJleHAiOjE1OTg1NjU2NjN9.2A1NV0Srvx-opLhi_F08hja61EuD7ju0gam4JvFLuaI"
+        const newcomment = {
+            name: "Any",
+            email: "any@gmail.com",
+            message: "any comment"
+        }
+        const blogId = "5f4640f7b926436796b33685"
+        chai.request(app)
             .post(`/blog/${blogId}/comment`)
-            .set("token",token)
+            .set("token", token)
             .send(newcomment)
             .end((err, res) => {
                 //console.log(res.body)
@@ -31,20 +31,40 @@ describe("Test for making a comment", () =>{
             });
 
     })
-   
+    it("should return 403 for unauthorized access of sending a comment", (done) => {
+
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWYzZmI2YmY2MjdlYWE3YmU0YjVmMDgyIiwiYWRtaW4iOnRydWV9LCJpYXQiOjE1OTgzNTYzNTQsImV4cCI6MTU5ODk2MTE1NH0.1KFFPddj89zUuJFLkJZRaVIxBwXezNx5iH9_yOV_OQE"
+        const newcomment = {
+            name: "Any",
+            email: "any@gmail.com",
+            message: "any comment"
+        }
+        const blogId = "5f4640f7b926436796b33685"
+        chai.request(app)
+            .post(`/blog/${blogId}/comment`)
+            .set("token", token)
+            .send(newcomment)
+            .end((err, res) => {
+                //console.log(res.body)
+                res.should.have.status(403);
+                done()
+            });
+
+    })
+
 })
 
 
 describe("Test to retrieve all comments", () => {
-        it("should  return 200 for a successful comments retrieval", (done) => {
-            const blogId = "5f4640f7b926436796b33685"
-            chai.request(app)
-                .get(`/blog/${blogId}/comment`)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    // console.log(res.body);
-                    res.body.should.be.a('array');
-                    done();
-                });
-        });
+    it("should  return 200 for a successful comments retrieval", (done) => {
+        const blogId = "5f4640f7b926436796b33685"
+        chai.request(app)
+            .get(`/blog/${blogId}/comment`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                // console.log(res.body);
+                res.body.should.be.a('array');
+                done();
+            });
+    });
 });

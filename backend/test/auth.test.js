@@ -19,8 +19,8 @@ describe(" Testing auth routes", () => {
         chai.request(app)
             .post('/user/signup')
             .send({
-                "username":"umwari57",
-                "email":"umwari57@gmail.com",
+                "username": "umwari037",
+                "email": "umwari037@gmail.com",
                 "password": "1234567897"
             })
             .end((err, res) => {
@@ -34,8 +34,8 @@ describe(" Testing auth routes", () => {
         chai.request(app)
             .post('/user/signup')
             .send({
-                "username":"mary234",
-                "email":"2mary04@gmail.com",
+                "username": "mary234",
+                "email": "2mary04@gmail.com",
                 "password": "1234567897"
             })
             .end((err, res) => {
@@ -45,18 +45,43 @@ describe(" Testing auth routes", () => {
             });
     });
 
-        it("should return a token for a successful login", (done) => {
-            chai.request(app)
-                .post('/user/login')
-                .send({
-                    email:"name@gmail.com",
-                    password: "1234567"
-                })
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.have.property('token');
-                    done()
-                });
+    it("should return a token for a successful login", (done) => {
+        chai.request(app)
+            .post('/user/login')
+            .send({
+                email: "name@gmail.com",
+                password: "1234567"
+            })
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('token');
+                done()
+            });
+    });
+
+    it("should return  400 for a user who does not exist", (done) => {
+        chai.request(app)
+            .post('/user/login')
+            .send({
+                email: "umuntu@gmail.com",
+                password: "1010102345"
+            })
+            .end((err, res) => {
+                res.should.have.status(400);
+                done()
+            });
+    });
+
+    it("should return  400 incorect password", (done) => {
+        chai.request(app)
+            .post('/user/login')
+            .send({
+                email: "name@gmail.com",
+                password: "1010102345"
+            })
+            .end((err, res) => {
+                res.should.have.status(400);
+                done()
+            });
     });
 });
-

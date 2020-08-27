@@ -21,7 +21,7 @@ exports.create = async(req, res) => {
         res.send(blog);
     }
    else {
-        //res.json(user);
+        res.status(403);
         res.json("Unauthorised access")
     }
 
@@ -70,7 +70,7 @@ exports.patch = async(req, res) => {
             res.send({ error: "blog doesn't exist!" });
         }
     } else {
-        //res.json(user);
+        res.status(403);
         res.json("Unauthorised access")
     }
 };
