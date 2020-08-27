@@ -19,8 +19,8 @@ describe(" Testing auth routes", () => {
         chai.request(app)
             .post('/user/signup')
             .send({
-                "username":"umwari46",
-                "email":"umwari46@gmail.com",
+                "username":"umwari57",
+                "email":"umwari57@gmail.com",
                 "password": "1234567897"
             })
             .end((err, res) => {

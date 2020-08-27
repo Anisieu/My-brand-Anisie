@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "devStart": "nodemon index.js",
-    "test": "mocha test/*.test.js"
+    "test": "nyc --reporter=html --reporter=text mocha  mocha test/*.test.js",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
@@ -15,11 +16,14 @@
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.3.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^8.1.1",
     "mongoose": "^5.8.2",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0"
   }
 }
