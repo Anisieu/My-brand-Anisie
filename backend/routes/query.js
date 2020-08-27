@@ -5,8 +5,8 @@ const auth = require("../middleware/auth");
 const router = express.Router();
 
 
-router.post("/", auth, queryval.queryvalidator, query.create);
-router.get("/", query.getAll);
+router.post("/create", auth, queryval.queryvalidator, query.create);
+router.get("/all", query.getAll);
 // router.patch("/:id",auth, query.patch);
 // router.delete("/:id",auth, query.delete);
 

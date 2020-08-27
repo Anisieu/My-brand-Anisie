@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 // Replace this with your MONGOURI.
-const MONGOURI = "mongodb://localhost:27017/mydatabase";
 
 const InitiateMongoServer = async () => {
   try {
-    await mongoose.connect(MONGOURI, {
-      useNewUrlParser: true
+    await mongoose.connect(process.env.MONGOURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     });
     console.log("Connected to DB !!");
   } catch (e) {
