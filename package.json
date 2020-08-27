@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "devStart": "nodemon index.js",
-    "test": "nyc --reporter=html --reporter=text mocha  mocha test/*.test.js",
+    "test": "nyc --reporter=html --reporter=text  mocha backend/test/*.test.js --timeout 10000 --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",

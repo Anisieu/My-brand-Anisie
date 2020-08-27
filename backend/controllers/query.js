@@ -17,20 +17,13 @@ exports.create = async(req, res) => {
         });
     }
 
-
-    if (req.user.admin == false) {
-        const query = new Query({
-            name: req.body.name,
-            email: req.body.email,
-            message: req.body.message
-        });
-        await query.save();
-        res.send(query);
-    } else {
-        //res.json(user);
-        res.json("Unauthorised access")
-    }
-
+    const query = new Query({
+        name: req.body.name,
+        email: req.body.email,
+        message: req.body.message
+    });
+    await query.save();
+    res.send(query);
 
 };
 

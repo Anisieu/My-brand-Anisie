@@ -14,9 +14,9 @@ router.get("/all", blog.getAll);
 router.get("/:id", blog.getOne);
 router.patch("/:id",auth, blog.patch);
 router.delete("/:id", auth, blog.delete);
-router.put("/:id/like", auth, blog.like);
+router.put("/:id/like", blog.like);
 
-router.post("/:blogId/comment", auth, commentval.commentvalidator, comment.create);
+router.post("/:blogId/comment", commentval.commentvalidator, comment.create);
 router.get("/:blogId/comment", comment.getAll);
 
 module.exports = router;
