@@ -19,8 +19,8 @@ describe(" Testing auth routes", () => {
         chai.request(app)
             .post('/user/signup')
             .send({
-                "username": "umwari037",
-                "email": "umwari037@gmail.com",
+                "username": "umwari03",
+                "email": "umwari03@gmail.com",
                 "password": "1234567897"
             })
             .end((err, res) => {
@@ -82,6 +82,34 @@ describe(" Testing auth routes", () => {
             .end((err, res) => {
                 res.should.have.status(400);
                 done()
+            });
+    });
+});
+
+describe("should return 200 for a successful user credentials retrieve ", () => {
+    it("should authenticate the user", (done) => {
+        chai.request(app)
+            .post('/user/login')
+            .send({
+                "email":"2mary04@gmail.com",
+                "password": "1234567897"
+            })
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('token');
+                
+                let token = res.body.token;
+                // console.log(res.body);
+                chai.request(app)
+                    .get('/user/credintials')
+                    .set('token', token)
+                    .end((err, res) => {
+                        // console.log(res.body)
+                        res.should.have.status(200);
+                        res.body.should.be.an('object');
+
+                        done();
+                    });
             });
     });
 });
