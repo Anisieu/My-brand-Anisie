@@ -3,18 +3,18 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 
-const user = require("./routes/user");
-const blog = require("./routes/blog");
-const query = require("./routes/query");
+const user = require("./backend/routes/user");
+const blog = require("./backend/routes/blog");
+const query = require("./backend/routes/query");
 // const comment = require("./routes/comment");
 
-const InitiateMongoServer = require("./config/db");
+const InitiateMongoServer = require("./backend/config/db");
 
 
 
 // Initiate Mongo Server
 InitiateMongoServer();
-require("./seeds/admin")
+require("./backend/seeds/admin")
 const app = express();
 
 // PORT
