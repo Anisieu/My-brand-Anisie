@@ -27,15 +27,15 @@ exports.create = async(req, res) => {
 
 };
 
-exports.getOne = async(req, res) => {
-    try {
-        const query = await Query.findOne({ _id: req.params.id });
-        res.send(query);
-    } catch {
-        res.status(404);
-        res.send({ error: "Query doesn't exist!" });
-    }
-};
+// exports.getOne = async(req, res) => {
+//     try {
+//         const query = await Query.findOne({ _id: req.params.id });
+//         res.send(query);
+//     } catch {
+//         res.status(404);
+//         res.send({ error: "Query doesn't exist!" });
+//     }
+// };
 
 // exports.patch = async(req, res) => {
 //     if (req.user.admin == true) {

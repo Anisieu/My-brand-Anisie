@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require("../../index");
-const token = require("./auth.test");
+const id = require("./post.test");
 
 // Configure chai
 chai.use(chaiHttp);
@@ -17,9 +17,9 @@ describe("Test for making a comment", () => {
             email: "any@gmail.com",
             message: "any comment"
         }
-        const blogId = "5f4640f7b926436796b33685"
+        //const blogId = "5f4640f7b926436796b33685"
         chai.request(app)
-            .post(`/blog/${blogId}/comment`)
+            .post(`/blog/${id}/comment`)
             .send(newcomment)
             .end((err, res) => {
                 //console.log(res.body)
@@ -32,14 +32,54 @@ describe("Test for making a comment", () => {
 
     })
 
+    it("should return 400 for unfilled fields of a comment", (done) => {
+
+    
+        const newcomment = {
+            name: "",
+            email: "any@gmail.com",
+            message: "any comment"
+        }
+        //const blogId = "5f4640f7b926436796b33685"
+        chai.request(app)
+            .post(`/blog/${id}/comment`)
+            .send(newcomment)
+            .end((err, res) => {
+                //console.log(res.body)
+                res.should.have.status(400);
+                done()
+            });
+
+    })
+
+    it("should return 400 for invalid email in a comment", (done) => {
+
+    
+        const newcomment = {
+            name: "",
+            email: "any@gmailcom",
+            message: "any comment"
+        }
+        //const blogId = "5f4640f7b926436796b33685"
+        chai.request(app)
+            .post(`/blog/${id}/comment`)
+            .send(newcomment)
+            .end((err, res) => {
+                //console.log(res.body)
+                res.should.have.status(400);
+                done()
+            });
+
+    })
+
 })
 
 
 describe("Test to retrieve all comments", () => {
     it("should  return 200 for a successful comments retrieval", (done) => {
-        const blogId = "5f4640f7b926436796b33685"
+        //const blogId = "5f4640f7b926436796b33685"
         chai.request(app)
-            .get(`/blog/${blogId}/comment`)
+            .get(`/blog/${id}/comment`)
             .end((err, res) => {
                 res.should.have.status(200);
                 // console.log(res.body);

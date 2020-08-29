@@ -210,3 +210,4 @@ describe("Test for deleting a blog post", () => {
     });
 
 })
+module.exports=id;
