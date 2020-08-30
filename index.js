@@ -1,12 +1,10 @@
 const express = require("express");
-// import express from 'express';
 const bodyParser = require("body-parser");
-
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 const user = require("./backend/routes/user");
 const blog = require("./backend/routes/blog");
 const query = require("./backend/routes/query");
-// const comment = require("./routes/comment");
 
 const InitiateMongoServer = require("./backend/config/db");
 
@@ -16,6 +14,7 @@ const InitiateMongoServer = require("./backend/config/db");
 InitiateMongoServer();
 require("./backend/seeds/admin")
 const app = express();
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // PORT
 const PORT = process.env.PORT || 3000;

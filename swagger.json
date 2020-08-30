@@ -1,0 +1,417 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "My-Brand-Anisie"
+    },
+    "basePath": "/",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin Login Endpoint",
+                "description": "sign-in the Admin",
+                "operationId": "signIn",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Admin credentials needed to login in the user",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/adminLogin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Admin Logged in successfully"
+                    },
+                    "403": {
+                        "description": "Invalid Credentials"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/blog/create": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin have an option of creating a blog post",
+                "description": "add a blog post",
+                "operationId": "addPost",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Token"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Admin object needed to create a blog Post",
+                        "type": "object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A post created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request, Invalid input"
+                    }
+                }
+            }
+        },
+            "/blog/all":{
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Userss can view all blog post",
+                "description": "view all blog posts",
+                "operationId": "viewPosts",
+                "responses": {
+                    "200": {
+                        "description": "Posts successfully retrieved"
+                    }
+                }
+            }
+        },
+  
+        "/blog/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Users can view a specific post",
+                "description": "view a specific post",
+                "operationId": "viewSpecificPost",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "blog post successfully found"
+                    },
+                    "404": {
+                        "description": "blog Post not found"
+                    }
+                }
+            },
+            
+            "patch": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin can edit a blog post",
+                "description": "edit a blog post",
+                "operationId": "editPost",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Token"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Admin authentication is required to edit a  Post",
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/editPost"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "blog post edited successfully"
+                    },
+                    "400": {
+                        "description": "Bad request or invalid input field"
+                    },
+                    "404": {
+                        "description": "blog post not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin delete a blog post",
+                "description": "delete a blog post",
+                "operationId": "deletePost",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Token"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "deleted"
+                    },
+                    "404": {
+                        "description": "blog post not found"
+                    }
+                }
+            }
+        },
+        "/query/create": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Users can add a query",
+                "description": "create a query",
+                "operationId": "addQuery",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "object needed to create a query",
+                        "type": "object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/query"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "query created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request or invalid input field"
+                    }
+                }
+            }
+        },
+        "/query/all": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin can view all queries",
+                "description": "view all queries",
+                "operationId": "viewQueries",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Token"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "queries successfully found"
+                    }
+                }
+            }
+        },
+        "/blog/{blogId}/comment": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Users can comment on a blog post",
+                "description": "comment on a blog post",
+                "operationId": "addComment",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "object needed to comment",
+                        "type": "object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Comment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "comment posted successfully"
+                    },
+                    "400": {
+                        "description": "Bad request or invalid input field"
+                    },
+                    "404": {
+                        "description": "blog post not found"
+                    }
+                }
+            }
+        },
+        "/blog/{id}/like": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Users  can like a post",
+                "description": "Like a blog post",
+                "operationId": "likePost",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "blog liked successfully"
+                    },
+                    "404": {
+                        "description": "blog Post not found"
+                    }
+                }
+            }
+        }
+    
+    },
+
+
+    "definitions": {
+        "adminLogin": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "required": true
+                },
+                "password": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "Post": {
+            "type": "object",
+            "properties": {                
+                "date": {
+                    "type": "string",
+                    "required": true
+                },
+                "title": {
+                    "type": "string",
+                    "required": true
+                },
+
+                "image_ulr": {
+                    "type": "string",
+                    "required": true
+                },
+                "content": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "editPost": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "default": "{ new Date() }",
+                    "required": true
+                },
+                "title": {
+                    "type": "string",
+                    "required": true
+                },
+
+                "image_ulr": {
+                    "type": "string",
+                    "required": true
+                },
+                "content": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "query": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "required": true
+                },
+                "email": {
+                    "type": "string",
+                    "required": true
+                },
+                "message": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "Comment": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "required": true
+                },
+                "email": {
+                    "type": "string",
+                    "required": true
+                },
+                "message": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+    }
+}
