@@ -4,7 +4,6 @@
         "version": "1.0",
         "title": "My-Brand-Anisie"
     },
-    "basePath": "/",
     "schemes": [
         "https",
         "http"
