@@ -111,6 +111,29 @@ describe("Test to retrieve one blog post", () => {
 
 });
 
+// describe("Test to like a blog post", () => {
+//     it("should return 200 for a successfully like of a blog post", (done) => {
+//         chai.request(app)
+//             .get(`/blog/${id}`)
+//             .end((err, res) => {
+//                 res.should.have.status(200);
+//                 res.body.should.be.a('object');
+//                 const like = res.body.like;
+
+//                 chai.request(app)
+//                 .get(`/blog/${id}/like`)
+//                 .end((err, res) => {
+//                     res.should.have.status(200);
+//                     res.body.should.be.a('object');
+//                     res.body.should.have.property('like').that.equals(like + 1);
+//                     done();
+//                 });
+//             });
+//     });
+
+
+// });
+
 describe("Test for updating a blog post", () => {
     it("should return 200 for a successful  updated post", (done) => {
         const updatedBlog = {

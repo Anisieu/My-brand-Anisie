@@ -78,70 +78,8 @@
         </nav>
     </footer>
 
-      <!-- The core Firebase JS SDK is always required and must be listed first -->
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-
-      <!-- TODO: Add SDKs for Firebase products that you want to use
-          https://firebase.google.com/docs/web/setup#available-libraries -->
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
-      <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-          apiKey: "AIzaSyBVhxK4NSd4vgDShVQ_sT7NFTjbx3oJ0QU",
-          authDomain: "anisie-brand.firebaseapp.com",
-          databaseURL: "https://anisie-brand.firebaseio.com",
-          projectId: "anisie-brand",
-          storageBucket: "anisie-brand.appspot.com",
-          messagingSenderId: "86557101911",
-          appId: "1:86557101911:web:6db2a963eac38788f43812",
-          measurementId: "G-MGXRQXKW5X"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-
-        var db = firebase.firestore();
-
-        // send = document.getElementById('send')
-        // send.onclick = function(){
-
-        contactform = document.getElementById('contactform')
-        contactform.onsubmit = function(e){
-          e.preventDefault();
-          
-          name    = document.getElementById('fname').value;
-          email   = document.getElementById('lname').value;
-          message = document.getElementById('subject').value; 
-
-          // console.log(name);
-
-          db.collection("contacts").add({
-              name: name,
-              email: email,
-              message: message
-          })
-          .then(function(docRef) {
-              console.log("Document written with ID: ", docRef.id);
-              document.getElementById('fname').value='';
-              document.getElementById('lname').value='';
-              document.getElementById('subject').value='';
-              
-              document.getElementById('confirm-message').style.display='block';
-              setTimeout(()=>{  
-                document.getElementById('confirm-message').style.display='none';
-              }, 5000);
-
-          })
-          .catch(function(error) {
-              console.error("Error adding document: ", error);
-          });
-        }
-
-
-      </script>
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./main.js"> </script>
 </body>
 
 </html>
