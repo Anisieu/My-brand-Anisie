@@ -8,6 +8,10 @@ const query = require("./backend/routes/query");
 
 const InitiateMongoServer = require("./backend/config/db");
 
+const cors = require('cors')
+
+ 
+
 
 
 // Initiate Mongo Server
@@ -15,7 +19,8 @@ InitiateMongoServer();
 require("./backend/seeds/admin")
 const app = express();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.use(cors());
+app.use((req, res, next) => { res.header('Access-Control-Allow-Origin', '*'); res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept', ); next(); }); 
 // PORT
 const PORT = process.env.PORT || 3000;
 
@@ -29,6 +34,7 @@ app.use(express.urlencoded({extended:true}));
 app.get("/", (req, res) => {
   res.json({ message: "API Working" });
 });
+
 
 app.use("/user", user);
 app.use("/blog", blog);

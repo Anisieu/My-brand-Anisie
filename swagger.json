@@ -4,7 +4,6 @@
         "version": "1.0",
         "title": "My-Brand-Anisie"
     },
-    "basePath": "/",
     "schemes": [
         "https",
         "http"
@@ -287,6 +286,19 @@
                     },
                     "404": {
                         "description": "blog post not found"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Users can view comments",
+                "description": "view all comments",
+                "operationId": "viewcomments",
+                "responses": {
+                    "200": {
+                        "description": "Posts successfully retrieved"
                     }
                 }
             }
