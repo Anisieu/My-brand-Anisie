@@ -1,7 +1,16 @@
 //import Axios from "axios";
 
-axios.post("http://mybrandanisie.herokuapp.com/query/all",{
-
+axios.get("http://mybrandanisie.herokuapp.com/query/all").then(function(response) {
+  console.log(response.data)
+  response.data.forEach((data) => {
+      toinsert  = `
+        <hr>
+        <div>Name: ${data.name} </div>
+        <div>Email: ${data.email} </div>
+        <div>Message: ${data.message} </div>
+      `;
+      content.innerHTML += toinsert
+  });
 })
 content = document.getElementById('content')
 

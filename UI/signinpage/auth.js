@@ -1,23 +1,22 @@
 // // listen for auth status changes
-// auth.onAuthStateChanged(user => {
-//     const pageUrl = document.location.href
-//     if (user) {
-//         console.log('user logged in: ', user);
-//         document.querySelector('.admin-action').style.display = 'block';
+function check_user_login(){
+  const token = localStorage.getItem('token');
+    const pageUrl = document.location.href
+    if (token) {
+        document.body.className = 'is-admin';
+        if(pageUrl.endsWith('/signinpage/index.html')) {
+            window.location.href = "../admin/index.html";
+        }
+    } else {
+        console.log('user logged out');
+        if(pageUrl.endsWith('/admin/index.html')) {
+            window.location.href = "../home/index.html";
+        }
+        // window.location.href = "../signinpage/index.html";
+    }
+}
 
-//import { response } from "express";
-
-//         if(pageUrl.endsWith('/signinpage/index.html')) {
-//             window.location.href = "../admin/index.html";
-//         }
-//     } else {
-//         console.log('user logged out');
-//         if(pageUrl.endsWith('/admin/index.html')) {
-//             window.location.href = "../home/index.html";
-//         }
-//         // window.location.href = "../signinpage/index.html";
-//     }
-// })
+check_user_login();
 
 // login
 
@@ -41,6 +40,8 @@ if (loginForm) {
 const logoutbutton = document.querySelector('#logout')
 if(logoutbutton){
    logoutbutton.addEventListener('click', ev => {
+    localStorage.setItem('token','');
+    window.location.href = "../home/index.html";
     // firebase.auth().signOut().then(function() {
     //     // Sign-out successful.
     //     window.location.href = "../home/index.html";
@@ -64,19 +65,21 @@ if(logoutbutton){
 
 content = document.getElementById('contact-message')
 if(content){
-//     db.collection("contacts").get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//         const data = doc.data();
-//         const toinsert  = `
-//           <hr>
-//           <div>Name: ${data.name} </div>
-//           <div>Email: ${data.email} </div>
-//           <div>Message: ${data.message} </div>
-//         `;
-//         content.innerHTML += toinsert
-//     });
-// });
-
+    let token=localStorage.getItem("token");
+    axios.get("http://mybrandanisie.herokuapp.com/query/all",{
+      headers:{token}
+    }).then(function(response) {
+      console.log(response.data)
+      response.data.forEach((data) => {
+          toinsert  = `
+            <hr>
+            <div>Name: ${data.name} </div>
+            <div>Email: ${data.email} </div>
+            <div>Message: ${data.message} </div>
+          `;
+          content.innerHTML += toinsert
+      });
+    })
 }
 
 
@@ -140,11 +143,11 @@ contactform.onsubmit = function(e){
 
     axios({
       method: 'PATCH',
-      headers : {
+      headers: {
         token
       },
       data: {
-        date:"2020-09-2T00:00:00.000Z",
+        date:"2020-09-02T00:00:00.000Z",
         image_ulr: img_url.value, 
         title :title.value,
         message : message.value

@@ -1,1 +1,1 @@
-# My-brand-Anisie-Uwimana
+[![Coverage Status](https://coveralls.io/repos/github/Anisieu/My-brand-Anisie/badge.svg?branch=bg-documentation)](https://coveralls.io/github/Anisieu/My-brand-Anisie?branch=bg-documentation)

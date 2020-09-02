@@ -15,11 +15,11 @@ main {
 }
 
 
-.admin-action{
+.for-admin{
   display: none;
 }
 
-.login-handle .admin-action{
+.is-admin .for-admin{
   display: block;
 }
 #confirm-message3{
