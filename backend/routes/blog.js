@@ -8,6 +8,7 @@ const commentval = require("../validator/comment");
 
 const auth = require("../middleware/auth");
 const router = express.Router();
+//const cors = require("cors")
 
 router.use(
     cors({
