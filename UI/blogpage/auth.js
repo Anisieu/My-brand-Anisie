@@ -10,7 +10,7 @@ function check_user_login(){
     } else {
         console.log('user logged out');
         if(pageUrl.endsWith('/admin/index.html')) {
-            window.location.href = "../home/index.html";
+            window.location.href = "../index.html";
         }
         // window.location.href = "../signinpage/index.html";
     }
@@ -47,7 +47,7 @@ if (logoutbutton) {
     logoutbutton.addEventListener('click', ev => {
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
-            window.location.href = "../home/index.html";
+            window.location.href = "../index.html";
         }).catch(function(error) {
             // An error happened.
             console.log(error)
