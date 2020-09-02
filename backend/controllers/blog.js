@@ -87,7 +87,6 @@ exports.like = async(req, res) => {
         if (err) {
             return res.status(400).json({ error: err })
         } else {
-            res.status(200).send('Liked');
             res.json(result)
         }
     })
