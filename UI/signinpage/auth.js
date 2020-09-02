@@ -137,20 +137,20 @@ contactform.onsubmit = function(e){
     const title = document.querySelector('#contactform #title'); 
     const message = document.querySelector('#contactform #message');
     const token = localStorage.getItem("token");
-    axios.patch(`https://mybrandanisie.herokuapp.com/blog/${post_id}`, {
 
-    headers : {
-      token
-    }
- 
-    },
-    {
-    image_ulr: img_url.value, 
-    title :title.value,
-    message : message.value
-    }
-
-    ).then(function(res) {
+    axios({
+      method: 'PATCH',
+      headers : {
+        token
+      },
+      data: {
+        date:"2020-09-2T00:00:00.000Z",
+        image_ulr: img_url.value, 
+        title :title.value,
+        message : message.value
+        
+      },
+      url: `https://mybrandanisie.herokuapp.com/blog/${post_id}`}).then(function(res) {
         console.log(res)
         contactform.reset();
         document.getElementById('confirm-message2').style.display='block';
