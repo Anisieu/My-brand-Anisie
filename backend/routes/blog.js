@@ -8,6 +8,16 @@ const commentval = require("../validator/comment");
 
 const auth = require("../middleware/auth");
 const router = express.Router();
+//const cors = require("cors")
+
+// router.use(
+//     cors({
+//       origin: '*',
+//       methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
+//       preflightContinue: false,
+//       optionsSuccessStatus: 204,
+//     }),
+//   );
 
 router.post("/create",auth, blogval.blogvalidator, blog.create);
 router.get("/all", blog.getAll);

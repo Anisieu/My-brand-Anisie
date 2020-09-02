@@ -30,6 +30,15 @@
               </div>
               <div class="row">
                 <div class="col-25">
+                  <label for="fname">Email</label>
+                </div>
+                <div class="col-75">
+                  <input type="email" id="user_email"  placeholder=" Enter your email.." required     oninvalid="this.setCustomValidity(' Your email is required')"
+                  oninput="this.setCustomValidity('')"  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
                   <label for="subject">comments</label>
                 </div>
                 <div class="col-75">
@@ -57,13 +66,17 @@
         </div>
     </footer>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script> -->
 
-    <script src="../blogpage/index.js"></script>
-    <script src="../blogpage/auth.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./auth.js"></script>
+    <!-- <script src="../blogpage/index.js"></script> -->
+    
+    
 
 </body>
 </html>
