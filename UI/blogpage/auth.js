@@ -1,19 +1,22 @@
-// auth.onAuthStateChanged(user => {
-//     const pageUrl = document.location.href
-//     if (user) {
-//         console.log('user logged in: ', user);
-//         document.body.className = 'login-handle';
-//         if(pageUrl.endsWith('/signinpage/index.html')) {
-//             window.location.href = "../admin/index.html";
-//         }
-//     } else {
-//         console.log('user logged out');
-//         if(pageUrl.endsWith('/admin/index.html')) {
-//             window.location.href = "../signinpage/index.html";
-//         }
-//         // window.location.href = "../signinpage/index.html";
-//     }
-// })
+// // listen for auth status changes
+function check_user_login(){
+  const token = localStorage.getItem('token');
+    const pageUrl = document.location.href
+    if (token) {
+        document.body.className = 'is-admin';
+        if(pageUrl.endsWith('/signinpage/index.html')) {
+            window.location.href = "../admin/index.html";
+        }
+    } else {
+        console.log('user logged out');
+        if(pageUrl.endsWith('/admin/index.html')) {
+            window.location.href = "../home/index.html";
+        }
+        // window.location.href = "../signinpage/index.html";
+    }
+}
+
+check_user_login();
 
 // login
 const loginForm = document.querySelector('#login-form');
@@ -72,9 +75,9 @@ if (blogpost_content) {
                   <p>${message}<a class="more" href="?post-id=${id}"> &gt;&gt;&gt;&gt; </a>
                   </p>
                   <div class="post-actions">
-                      <a href="../admin/index.html?post-id=${id}#blog-posts" ><img src="./images/edit.png"  class="hvr-fade"></a>
-                      <a href="#" data-id="${id}" class="delete"><img src="./images/delete.png"  class="hvr-fade"></a>
-                      <a class="liked" href="#"><img class="likes-images" src="./images/like.png" class=" hvr-fade"><div class="likes-number">${data.like}</div></a>
+                      <a href="../admin/index.html?post-id=${id}#blog-posts" class="for-admin"><img src="./images/edit.png"  class="hvr-fade"></a>
+                      <a href="#" data-id="${id}" class="for-admin delete"><img src="./images/delete.png"  class="hvr-fade"></a>
+                      <a class="liked" data-id="${id}" href="#"><img class="likes-images" src="./images/like.png" class=" hvr-fade"><div class="likes-number">${data.like || 0}</div></a>
                       <a  href="?post-id=${id}#comment-container"><img src="./images/com.png" class=" hvr-fade"></a>
                   </div>
                </div>    
@@ -91,8 +94,8 @@ if (blogpost_content) {
                   <p>${data.content}<a class="more" href="?post-id=${id}"> &gt;&gt;&gt;&gt; </a>
                   </p>
                   <div class="post-actions">
-                      <a href="../admin/index.html?post-id=${id}#blog-posts" class=""><img src="./images/edit.png"  class="hvr-fade"></a>
-                      <a href="#" data-id="${id}" class=" delete"><img src="./images/delete.png" class="hvr-fade"></a>
+                      <a href="../admin/index.html?post-id=${id}#blog-posts" class="for-admin"><img src="./images/edit.png"  class="hvr-fade"></a>
+                      <a href="#" data-id="${id}" class="for-admin delete"><img src="./images/delete.png" class="hvr-fade"></a>
                       <a  class="liked" href="#"><img src="./images/like.png" class=" hvr-fade"></a>
                       <a href="#"><img src="./images/com.png" class=" hvr-fade"></a>                      
                   </div>
@@ -106,30 +109,21 @@ if (blogpost_content) {
             blogpost_content.innerHTML += insert_long(data, post_id);
             comment_content.style.display = 'block';
         })
-        axios.get(`https://mybrandanisie.herokuapp.com/blog/{blogId}/comment`).then(function(res) {
+        axios.get(`https://mybrandanisie.herokuapp.com/blog/${post_id}/comment`).then(function(res) {
             const data = res.data;
             console.log(data)
-            const displayComments = (data) => {
-                data.forEach((comment) => {
+            data.forEach((comment) => {
 
-                    const toinsert = `
+                const toinsert = `
                 <div class="my-comments">
                     <hr>
                     <div>Name: ${comment.name} </div>
                     <div>Email: ${comment.email} </div>
                     <div>Comment: ${comment.message} </div>
                 </div>
-              `;
-                    comment_content.innerHTML += toinsert
-               
-
-
-                })
-                
-                displayComments();
-            }
-
-            comment_content.innerHTML += 'insert comment'
+                `;
+                comment_content.innerHTML += toinsert
+            })
 
         })
 
@@ -166,7 +160,7 @@ if (blogpost_content) {
                 user_name = document.getElementById('user_name').value;
                 user_email = document.getElementById('user_email').value;
                 user_comment = document.getElementById('user_comment').value;
-                axios.post("https://mybrandanisie.herokuapp.com/blog/{blogId}/comment", {
+                axios.post(`https://mybrandanisie.herokuapp.com/blog/${post_id}/comment`, {
                         name: user_name,
                         email: user_email,
                         message: user_comment,
@@ -187,40 +181,40 @@ if (blogpost_content) {
     } else {
         //--- DISPLAY Many Blog Post
         axios.get("https://mybrandanisie.herokuapp.com/blog/all").then(function(response) {
-            console.log(response.data)
             response.data.forEach((doc) => {
                 blogpost_content.innerHTML += insert_short(doc, doc._id);
 
-                document.querySelectorAll('.admin-action.delete').forEach(el => {
-                    const id = el.getAttribute('data-id');
-                    const parent = el.parentElement.parentElement.parentElement;
-                    el.onclick = function() {
-                        console.log('deleted', id);
-                    }
-                });
 
             });
-        })
-
-            document.querySelectorAll('.admin-action.delete').forEach( el => {
+            
+            document.querySelectorAll('.post-actions .liked').forEach(el => {
+                el.onclick = function(){
+                    const id = el.getAttribute('data-id');
+                    axios.put(`https://mybrandanisie.herokuapp.com/blog/${id}/like`).then(function(response) {
+                      data = response.data;
+                      location.reload();
+                    });
+                }
+            });
+            const token = localStorage.getItem('token');
+            document.querySelectorAll('.post-actions .delete').forEach(el => {
                 const id = el.getAttribute('data-id');
                 const parent = el.parentElement.parentElement.parentElement;
                 el.onclick = function(){
-                    console.log('deleted', id);
+                    axios.delete(`https://mybrandanisie.herokuapp.com/blog/${id}`,{
+                    headers:{
+                        token
+                    }
+                    
+                }).then(function(res) {
+                    alert("deleted successfully");
+                    location.reload();
+                    });
 
-                    // db.collection("posts").doc(id).delete().then(function() {
-                    //     console.log("Document successfully deleted!");
-                    //     parent.remove();
-                    // }).catch(function(error) {
-                    //     console.error("Error removing document: ", error);
-                    // });
-                }
+                }  
             });
-
-        // });
-    }
-
-
+        });
+    }   
 }
 
 // --------------- Retrieve project
