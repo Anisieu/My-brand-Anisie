@@ -10,7 +10,7 @@ function check_user_login(){
     } else {
         console.log('user logged out');
         if(pageUrl.endsWith('/admin/index.html')) {
-            window.location.href = "../home/index.html";
+            window.location.href = "../index.html";
         }
         // window.location.href = "../signinpage/index.html";
     }
@@ -41,7 +41,7 @@ const logoutbutton = document.querySelector('#logout')
 if(logoutbutton){
    logoutbutton.addEventListener('click', ev => {
     localStorage.setItem('token','');
-    window.location.href = "../home/index.html";
+    window.location.href = "../index.html";
     // firebase.auth().signOut().then(function() {
     //     // Sign-out successful.
     //     window.location.href = "../home/index.html";
@@ -66,7 +66,7 @@ if(logoutbutton){
 content = document.getElementById('contact-message')
 if(content){
     let token=localStorage.getItem("token");
-    axios.get("http://mybrandanisie.herokuapp.com/query/all",{
+    axios.get("https://mybrandanisie.herokuapp.com/query/all",{
       headers:{token}
     }).then(function(response) {
       console.log(response.data)
